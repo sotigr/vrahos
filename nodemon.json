@@ -1,0 +1,6 @@
+{
+    "verbose": true, 
+    "ext": "go,js,mod",
+    "exec": "webpack --mode=development && ./tailwind/tailwindcss -i frontend/css/global.css -o static/.dist/styles.css && go run ./cmd || exit 1",
+    "signal": "SIGTERM" 
+}

@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  vrahos:
+    container_name: vrahos
+    build: 
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+    volumes:
+      - ../../:/src 
