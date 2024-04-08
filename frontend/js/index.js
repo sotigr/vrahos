@@ -1,3 +1,5 @@
-import "./htmx"
-import "./sse"
+
+import "./sse.js"
+
 import "./web-components/box" 
+ 

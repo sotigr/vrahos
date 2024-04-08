@@ -8,7 +8,8 @@ RUN NODE_MAJOR=20
 RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_21.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update
 RUN apt-get install nodejs -y
-RUN npm i -g nodemon webpack webpack-cli
+RUN npm i -g nodemon webpack webpack-cli script-loader
+
  
 COPY cmd /src/cmd
 COPY components /src/components 
