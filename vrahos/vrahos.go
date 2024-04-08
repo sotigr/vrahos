@@ -10,7 +10,7 @@ import (
 	"text/template"
 )
 
-func Vrahos(mux *http.ServeMux, components []Component) {
+func Vrahos(mux *http.ServeMux, components []Component, handler func(next http.Handler) http.Handler) {
 
 	fs := http.FileServer(http.Dir("./static"))
 
@@ -67,7 +67,7 @@ func Vrahos(mux *http.ServeMux, components []Component) {
 				panic("All urls must end with \"/\" Error in " + url + " " + name)
 			}
 			validRoutes = append(validRoutes, url)
-			mux.HandleFunc(url, func(w http.ResponseWriter, r *http.Request) {
+			mux.Handle(url, handler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				if !slices.Contains(validRoutes, r.URL.Path) {
 					http.Error(w, "Not Found", http.StatusNotFound)
 					return
@@ -112,7 +112,7 @@ func Vrahos(mux *http.ServeMux, components []Component) {
 				}
 
 				tmp.Execute(w, &data)
-			})
+			})))
 		}
 	}
 

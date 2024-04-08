@@ -11,6 +11,10 @@ import (
 	"golang.org/x/net/http2"
 )
 
+func RegisterMiddleware(next http.Handler) http.Handler {
+	return LoggerMiddleware(TestMiddleware(next))
+}
+
 func main() {
 
 	components := []vrahos.Component{
@@ -20,7 +24,7 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	vrahos.Vrahos(mux, components)
+	vrahos.Vrahos(mux, components, RegisterMiddleware)
 
 	port := os.Getenv("PORT")
 	fmt.Println("Listening " + port)
