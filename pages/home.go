@@ -23,9 +23,10 @@ func (p IndexPage) Template() string {
 	return `
 	{{template "DocumentStart" .}}
  
-<c-box style="width: 800px; margin: 0 auto; margin-top: 30px;">
-	Welcome to this sample
-</c-box> 
+		<c-box class="w-[800px] mx-auto mt-10">
+			Welcome to this sample
+		</c-box> 
+
 	{{template "DocumentEnd" .}}
 	`
 }
