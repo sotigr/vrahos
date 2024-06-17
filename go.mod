@@ -1,4 +1,4 @@
-module server
+module vrahos
 
 go 1.22
 
