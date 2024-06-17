@@ -1,4 +1,4 @@
-module vrahos
+module github.com/sotigr/vrahos
 
 go 1.22
 
