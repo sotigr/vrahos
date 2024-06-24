@@ -22,7 +22,7 @@ func minifyHtml(s string) string {
 	return s
 }
 
-func Vrahos(mux *http.ServeMux, components []Component, sse *Sse, meta *MetaData, handler func(next http.Handler) http.Handler) {
+func Vrahos(mux *http.ServeMux, components []Component, meta *MetaData, handler func(next http.Handler) http.Handler) {
 
 	fs := http.FileServer(http.Dir("./static"))
 
@@ -139,9 +139,9 @@ func Vrahos(mux *http.ServeMux, components []Component, sse *Sse, meta *MetaData
 		}
 	}
 
-	if sse != nil {
-		fmt.Println("Configuring sse server at", sse.GetPath())
-		sse.Init(mux)
+	if meta.Sse != nil {
+		fmt.Println("Configuring sse server at", meta.Sse.GetPath())
+		meta.Sse.Init(mux)
 	}
 
 }
